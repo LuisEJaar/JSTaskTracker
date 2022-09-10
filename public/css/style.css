@@ -1,0 +1,42 @@
+/* Banner */
+nav {
+    user-select: none;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Index Page styles */
+.indexPage {
+    max-width: 450px;
+}
+
+.indexPage a {
+    max-width: 50%;
+    min-width: 40%;
+}
+
+/* Login Page styles */
+.login {
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.loginContainer {
+    max-width: 550px;
+}
+
+/* Box Shadow, universal */
+
+.shadow {
+    box-shadow: 3px, 3px, blue;
+}
+
+/* Lists */
+
+li {
+    list-style-type: none;
+}

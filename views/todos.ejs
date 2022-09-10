@@ -1,0 +1,18 @@
+<section class="justify-content-around pt-4 pb-4 bg-info bg-gradient width-25 my-auto rounded-4 border-1 border border-info container text-center d-flex flex-column flex-sm-row shadow">
+    <section class="bg-dark rounded text-light me-2">
+        <%- include('./partials/chores.ejs')%>
+    </section>
+    <section class="bg-light rounded">
+        <%- include('./partials/rewards.ejs')%>
+    </section>
+</section>
+
+<section> 
+    <form action="/todos/createTodo" method='POST'>
+        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+        <input type="submit">
+    </form>
+
+    <script src="js/main.js"></script>
+</section>
+    

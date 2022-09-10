@@ -1,0 +1,23 @@
+<section class="pt-4 pb-4 bg-info bg-gradient width-25 my-auto rounded-4 border-1 border border-info container text-center d-flex flex-column loginContainer shadow">
+    <% if (locals.messages.errors) { %>
+        <% messages.errors.forEach( el => { %>
+            <div class="alert alert-danger"><%= el.msg %></div>
+        <% }) %>    
+    <% } %>
+    <% if (locals.messages.info) { %>
+        <% messages.info.forEach( el => { %>
+            <div class="alert alert-danger"><%= el.msg %></div>
+        <% }) %>    
+    <% } %>
+    <h1 class="pb-3">Welcome to chore-ify!</h1>
+    <form class="d-flex flex-column" action="/login" method="POST">
+        <div class="input-group mb-3 login">
+            <input type="email" name="email" class="mb-2 form-control text-center shadow" placeholder="Email" placeholder="User Email" aria-label="User Email" aria-describedby="basic-addon2">
+        </div>
+        <div class="input-group mb-3 login">
+            <input type="password" name="password" placeholder="Password" class="mb-2 form-control text-center shadow" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <input class="btn btn-success login shadow" type="submit">
+    </form>
+</section>
+
