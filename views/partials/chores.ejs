@@ -1,12 +1,21 @@
 <h1>Chores</h1>
-        <ul>
-        <% todos.forEach( el => { %>
-                <li class='todoItem d-flex justify-content-between pe-3' data-id='<%=el._id%>'>
-                  <div class="form-check form-switch">
-                    <input class="<%= el.completed === true ? 'completed' : 'not'%> form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" <% if(el.completed === true){ %> checked <%} %>>
-                  </div>
-                    <span><%= el.todo %></span>
-                    <i class="bi-trash del"></i>
-                </li>
-        <% }) %>    
-        </ul>
+<ul>
+  <li class='border border-primary bg-light ps-3 mb-2 text-dark rounded todoItem d-flex justify-content-between pe-3 me-3'>
+      <span>Complete</span>
+      <span>Description</span>
+      <span>Points</span>
+      <span>Reoccuring?</span>
+      <span>Delete</span>
+  </li>
+<% todos.forEach( el => { %>
+        <li class='border border-primary bg-light ps-3 mb-2 text-dark rounded todoItem d-flex justify-content-between pe-3 me-3' data-id='<%=el._id%>'>
+          <div class="form-check form-switch">
+            <input class="<%= el.completed === true ? 'completed' : 'not'%> form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" <% if(el.completed === true){ %> checked <%} %>>
+          </div>
+            <span><%= el.todo %></span>
+            <span><%= el.points %></span>
+            <span><% if(el.reoccuring === true){ %> <i class="bi-arrow-repeat"></i> <%} %></span>
+            <i class="bi-trash del"></i>
+        </li>
+<% }) %>    
+</ul>

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
-const TodoSchema = new mongoose.Schema({
-  todo: {
+const RewardSchema = new mongoose.Schema({
+  reward: {
     type: String,
     required: true,
   },
@@ -12,7 +12,7 @@ const TodoSchema = new mongoose.Schema({
   userId: {
     type: String,
     required: true
-  }, 
+  },
   points: {
     type: Number,
     required: true
@@ -23,4 +23,4 @@ const TodoSchema = new mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model('Todo', TodoSchema)
+module.exports = mongoose.model('Todo', RewardSchema)

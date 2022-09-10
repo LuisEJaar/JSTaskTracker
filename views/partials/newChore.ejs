@@ -1,5 +1,10 @@
 <h2>Enter new chore:</h2>
 <form action="/todos/createTodo" method='POST'>
-    <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+    <input type="text" placeholder="Description" name='todoItem'>
+    <input type="number" placeholder="Point Value" name="points">
+      <input class="form-check-input" type="checkbox" value="true" id="flexCheckDefault" name="reoccuring">
+      <label class="form-check-label" for="flexCheckDefault">
+        Reocurring?
+      </label>
     <input type="submit">
 </form>
