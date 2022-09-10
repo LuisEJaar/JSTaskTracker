@@ -1,18 +1,24 @@
-<section class="justify-content-around pt-4 pb-4 bg-info bg-gradient width-25 my-auto rounded-4 border-1 border border-info container text-center d-flex flex-column flex-sm-row shadow">
-    <section class="bg-dark rounded text-light me-2">
-        <%- include('./partials/chores.ejs')%>
+<div class="my-auto">
+    
+    <section class="justify-content-around pt-4 pb-4 bg-info bg-gradient width-50  rounded-4 border-1 border border-info container text-center d-flex flex-column shadow">
+        <h2><%= user.userName %> has <%= left %> <%= (left > 1 || left == 0) ? 'things' : 'thing' %> left to do.</h2>
+        <section class="bg-dark rounded text-light">
+            <%- include('./partials/chores.ejs')%>
+        </section>
+        <div>
+            <button class="btn btn-success mt-2">Claim Points</button>
+        </div>
+        <h2><%= user.userName %> has <%= left %> <%= (left > 1 || left == 0) ? 'points' : 'point' %> left to spend.</h2>
+        <section class="bg-light rounded mt-2">
+            <%- include('./partials/rewards.ejs')%>
+        </section>
     </section>
-    <section class="bg-light rounded">
-        <%- include('./partials/rewards.ejs')%>
+    
+    <section class="justify-content-around pt-2 mt-2 pb-4 bg-info bg-gradient width-25 rounded-4 border-1 border border-info container text-center d-flex flex-column shadow"> 
+        <%- include('./partials/newChore.ejs')%>
     </section>
-</section>
-
-<section> 
-    <form action="/todos/createTodo" method='POST'>
-        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
-        <input type="submit">
-    </form>
-
-    <script src="js/main.js"></script>
-</section>
+    <section class="justify-content-around pt-2 mt-2 pb-4 bg-info bg-gradient width-25 rounded-4 border-1 border border-info container text-center d-flex flex-column shadow"> 
+        <%- include('./partials/newReward.ejs')%>
+    </section>
+</div>
     
