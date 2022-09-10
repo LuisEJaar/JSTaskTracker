@@ -5,7 +5,7 @@ module.exports = {
         try{
             await Reward.create(
                 {
-                    reward: req.body.todoItem, 
+                    reward: req.body.rewardItem, 
                     completed: false, 
                     userId: req.user.id, 
                     points: req.body.points,

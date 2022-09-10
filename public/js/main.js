@@ -16,6 +16,7 @@ Array.from(todoComplete).forEach((el)=>{
 
 async function deleteTodo(){
     const todoId = this.parentNode.dataset.id
+    const type = this.parentNode.dataset.type
     try{
         const response = await fetch('todos/deleteTodo', {
             method: 'delete',
