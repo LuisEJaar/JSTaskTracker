@@ -23,4 +23,4 @@ const RewardSchema = new mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model('Todo', RewardSchema)
+module.exports = mongoose.model('Reward', RewardSchema)

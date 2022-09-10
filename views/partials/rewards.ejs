@@ -7,7 +7,7 @@
         <span>Reoccuring?</span>
         <span>Delete</span>
 </li>
-<% todos.forEach( el => { %>
+<% rewards.forEach( el => { %>
         <li class='border border-primary bg-dark ps-3 mb-2 text-light rounded todoItem d-flex justify-content-between pe-3 me-3' data-id='<%=el._id%>'>
         <div class="form-check form-switch">
                 <input class="<%= el.completed === true ? 'completed' : 'not'%> form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" <% if(el.completed === true){ %> checked <%} %>>

@@ -1,12 +1,16 @@
 const Todo = require('../models/Todo')
+const Reward = require('../models/Reward')
 
 module.exports = {
     getTodos: async (req,res)=>{
         console.log(req.user)
         try{
+            // Todos 
             const todoItems = await Todo.find({userId:req.user.id})
             const itemsLeft = await Todo.countDocuments({userId:req.user.id,completed: false})
-            res.render('todos.ejs', {todos: todoItems, left: itemsLeft, user: req.user})
+            // Rewards
+            const rewardItems = await Reward.find({userId:req.user.id})
+            res.render('todos.ejs', {todos: todoItems, left: itemsLeft, user: req.user, rewards: rewardItems})
         }catch(err){
             console.log(err)
         }
