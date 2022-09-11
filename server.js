@@ -10,6 +10,7 @@ const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
 const todoRoutes = require('./routes/todos')
 const rewardRoutes = require('./routes/rewards')
+const userRoutes = require('./routes/users')
 
 require('dotenv').config({path: './config/.env'})
 
@@ -53,6 +54,7 @@ app.use(flash())
 app.use('/', mainRoutes)
 app.use('/todos', todoRoutes)
 app.use('/rewards', rewardRoutes)
+app.use('/users', userRoutes)
  
 app.listen(process.env.PORT || 3000, function() {
   console.log(`listening on http://localhost:${3000}`)

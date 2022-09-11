@@ -11,7 +11,7 @@
     </section>
     
     <section class="justify-content-around pt-4 pb-4 bg-info bg-gradient width-50  rounded-4 border-1 border border-info container text-center d-flex flex-column shadow">
-        <h2><%= user.userName %> has <%= user.points %> <%= (user.points > 1 || user.points == 0) ? 'points' : 'point' %> left to spend.</h2>
+        <h2><%= user.userName %> has <span id="userPoints"><%= user.points %></span> <%= (user.points > 1 || user.points == 0) ? 'points' : 'point' %> left to spend.</h2>
         <section class="bg-light rounded mt-2">
             <%- include('./partials/rewards.ejs')%>
         </section>

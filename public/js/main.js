@@ -74,8 +74,25 @@ async function markIncomplete(){
     }
 }
 
+async function addToTotal(pointsValue){
+    try{
+        const response = await fetch('users/addToTotal', {
+            method: 'put',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+                points: pointsValue
+            })
+        })
+        const data = await response.json()
+        console.log(data)
+        location.reload()
+    }catch(err){
+        console.log(err)
+    }
+}
+
 async function claimChorePoints(){
-    let pointsClaimed = 0
+    let pointsClaimed = Number(document.getElementById('userPoints').innerHTML)
 
     Array.from(isComplete).forEach((el)=>{
         // Add to total points
@@ -94,4 +111,5 @@ async function claimChorePoints(){
     })
 
     // Add points to current total
+    addToTotal(pointsClaimed)
 }
