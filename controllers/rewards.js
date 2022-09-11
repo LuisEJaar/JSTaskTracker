@@ -17,7 +17,7 @@ module.exports = {
             console.log(err)
         }
     },
-    markRedeemed: async (req, res)=>{
+    markComplete: async (req, res)=>{
         try{
             await Reward.findOneAndUpdate({_id:req.body.rewardIdFromJSFile},{
                 completed: true
@@ -28,7 +28,7 @@ module.exports = {
             console.log(err)
         }
     },
-    markUnredeemed: async (req, res)=>{
+    markIncomplete: async (req, res)=>{
         try{
             await Reward.findOneAndUpdate({_id:req.body.rewardIdFromJSFile},{
                 completed: false
@@ -42,7 +42,7 @@ module.exports = {
     deleteReward: async (req, res)=>{
         console.log(req.body.rewardIdFromJSFile)
         try{
-            await Todo.findOneAndDelete({_id:req.body.rewardIdFromJSFile})
+            await Reward.findOneAndDelete({_id:req.body.rewardIdFromJSFile})
             console.log('Deleted Reward')
             res.json('Deleted It')
         }catch(err){
