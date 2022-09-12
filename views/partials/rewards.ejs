@@ -1,16 +1,16 @@
 <h1>Rewards</h1>
 <ul>
-<li class='border border-primary bg-dark ps-3 mb-2 text-light rounded todoItem d-flex justify-content-between pe-3 me-3'>
+<li class='bg-secondary ps-3 mb-2 text-light rounded todoItem d-flex justify-content-between pe-3 me-3'>
         <span>Claim</span>
-        <span>Description</span>
+        <span>Desc</span>
         <span>Points</span>
-        <span>Reoccuring?</span>
+        <span>Repeat</span>
         <span>Delete</span>
 </li>
 <% rewards.forEach( el => { %>
-        <li class='border border-primary bg-dark ps-3 mb-2 text-light rounded todoItem d-flex justify-content-between pe-3 me-3'data-type='reward' data-id='<%=el._id%>'>
+        <li class='shadow border <%= el.points < user.points ? 'bg-success' : 'bg-dark'%> ps-3 mb-2 text-light rounded todoItem d-flex justify-content-between pe-3 me-3'data-type='reward' data-id='<%=el._id%>'>
                 <div class="form-check form-switch">
-                        <input class="reward <%= el.completed === true ? 'completed' : 'not'%> form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" <% if(el.completed === true){ %> checked <%} %>>
+                        <input class="reward <%= el.completed === true ? 'completed' : 'not'%> form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" <% if(el.points > user.points){ %> disabled <%} %>  <% if(el.completed === true){ %> checked <%} %>>
                 </div>
                 <span><%= el.reward %></span>
                 <span><%= el.points %></span>

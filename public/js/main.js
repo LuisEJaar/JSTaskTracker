@@ -99,12 +99,12 @@ async function claimChorePoints(){
         const value = el.parentNode.parentNode.getElementsByClassName('points')
         pointsClaimed += Number(value[0].innerHTML)
         //Delete non-reoccuring
+        const event = new Event('click')
         if(el.parentNode.parentNode.dataset.reoccurance != 'reoccuring'){
             console.log(el.parentNode.parentElement.lastElementChild)
             el.parentNode.parentElement.lastElementChild.dispatchEvent(event)
         }
         //Reset the completed statuses
-        const event = new Event('click')
         if(el.parentNode.parentNode.dataset.type != 'reward'){
             el.dispatchEvent(event)
         }

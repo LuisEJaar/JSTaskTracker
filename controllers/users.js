@@ -6,7 +6,7 @@ module.exports = {
           await User.findOneAndUpdate({_id:req.user.id},{
               points: req.body.points
           })
-          console.log(req.body.points)
+          console.log('Done')
       }catch(err){
           console.log(err)
       }

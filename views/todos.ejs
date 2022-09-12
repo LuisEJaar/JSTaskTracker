@@ -1,7 +1,7 @@
 <div class="my-auto">
     
-    <section class="justify-content-around pt-4 pb-4 mt-5 mb-2 bg-info bg-gradient width-50  rounded-4 border-1 border border-info container text-center d-flex flex-column shadow">
-        <h2><%= user.userName %> has <%= left %> <%= (left > 1 || left == 0) ? 'things' : 'thing' %> left to do.</h2>
+    <section class="justify-content-around pt-4 pb-4 mt-3 mb-2 bg-info bg-gradient width-50  rounded-4 border-1 border border-info container text-center d-flex flex-column shadow">
+        <h2><%= user.userName %> has <span class="text-primary"><%= left %></span> <%= (left > 1 || left == 0) ? 'things' : 'thing' %> left to do.</h2>
         <section class="bg-dark rounded text-light">
             <%- include('./partials/chores.ejs')%>
         </section>
@@ -11,7 +11,7 @@
     </section>
     
     <section class="justify-content-around pt-4 pb-4 bg-info bg-gradient width-50  rounded-4 border-1 border border-info container text-center d-flex flex-column shadow">
-        <h2><%= user.userName %> has <span id="userPoints"><%= user.points %></span> <%= (user.points > 1 || user.points == 0) ? 'points' : 'point' %> left to spend.</h2>
+        <h2><%= user.userName %> has <span class="text-primary" id="userPoints"><%= user.points %></span> <%= (user.points > 1 || user.points == 0) ? 'points' : 'point' %> left to spend.</h2>
         <section class="bg-light rounded mt-2">
             <%- include('./partials/rewards.ejs')%>
         </section>
@@ -20,11 +20,21 @@
         </div>
     </section>
 
-    <section class="justify-content-around pt-2 mt-2 pb-4 bg-info bg-gradient width-25 rounded-4 border-1 border border-info container text-center d-flex flex-column shadow"> 
-        <%- include('./partials/newChore.ejs')%>
+    <section class="justify-content-around pt-2 mt-2 pb-2 bg-info bg-gradient width-25 rounded-4 border-1 border border-info container text-center d-flex flex-column shadow"> 
+        <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#newChore">
+            Add new Chore
+        </button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newReward">
+            Add new Reward
+        </button>
     </section>
-    <section class="justify-content-around pt-2 mt-2 pb-4 bg-info bg-gradient width-25 rounded-4 border-1 border border-info container text-center d-flex flex-column shadow"> 
-        <%- include('./partials/newReward.ejs')%>
-    </section>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="newChore" tabindex="-1" aria-labelledby="newChore" aria-hidden="true">
+    <%- include('./partials/newChore.ejs')%>
+</div>
+<div class="modal fade" id="newReward" tabindex="-1" aria-labelledby="newReward" aria-hidden="true">
+    <%- include('./partials/newReward.ejs')%>
 </div>
     
