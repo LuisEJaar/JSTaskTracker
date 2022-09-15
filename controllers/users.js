@@ -1,7 +1,7 @@
 const User = require('../models/User')
 
 module.exports = {
-  addToTotal: async (req, res)=>{
+  changeTotal: async (req, res)=>{
       try{
           await User.findOneAndUpdate({_id:req.user.id},{
               points: req.body.points

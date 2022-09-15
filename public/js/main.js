@@ -2,6 +2,8 @@ const deleteBtn = document.querySelectorAll('.del')
 const notComplete = document.querySelectorAll('.not')
 const isComplete = document.querySelectorAll('.completed')
 const claimPoints = document.getElementById('claimPoints')
+const claimRewards = document.getElementById('claimRewards')
+
 
 Array.from(deleteBtn).forEach((el)=>{
     el.addEventListener('click', deleteItem)
@@ -16,6 +18,34 @@ Array.from(isComplete).forEach((el)=>{
 })
 
 claimPoints.addEventListener('click', claimChorePoints)
+claimRewards.addEventListener('click', claimRewardsPoints)
+
+//Check to ensure sufficient funds
+function pointsCheck() {
+    try{
+        let pointsAvailable = Number(document.getElementById('userPoints').innerHTML)
+        let pointsClaimed = 0
+        Array.from(isComplete).forEach((el)=>{
+            let elType = el.parentNode.parentNode.dataset.type
+            // Add to total points
+            if(elType == 'reward'){
+                const value = el.parentNode.parentNode.getElementsByClassName('points')
+                pointsClaimed += Number(value[0].innerHTML)
+            }
+        })
+
+        if(pointsClaimed > pointsAvailable){
+            let rewBtn = document.getElementById('claimRewards')
+            rewBtn.setAttribute('disabled', '')
+            let pointDeficit = document.getElementById('pointDeficit')
+            pointDeficit.classList.remove('hidden') 
+        }
+    } catch(err){
+        console.log(err)
+    }
+}
+
+pointsCheck()
 
 async function deleteItem(){
     const itemId = this.parentNode.dataset.id
@@ -74,9 +104,9 @@ async function markIncomplete(){
     }
 }
 
-async function addToTotal(pointsValue){
+async function changeTotal(pointsValue){
     try{
-        const response = await fetch('users/addToTotal', {
+        const response = await fetch('users/changeTotal', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
@@ -92,24 +122,58 @@ async function addToTotal(pointsValue){
 }
 
 async function claimChorePoints(){
-    let pointsClaimed = Number(document.getElementById('userPoints').innerHTML)
+    try {
+        let pointsClaimed = Number(document.getElementById('userPoints').innerHTML)
 
-    Array.from(isComplete).forEach((el)=>{
-        // Add to total points
-        const value = el.parentNode.parentNode.getElementsByClassName('points')
-        pointsClaimed += Number(value[0].innerHTML)
-        //Delete non-reoccuring
-        const event = new Event('click')
-        if(el.parentNode.parentNode.dataset.reoccurance != 'reoccuring'){
-            console.log(el.parentNode.parentElement.lastElementChild)
-            el.parentNode.parentElement.lastElementChild.dispatchEvent(event)
-        }
-        //Reset the completed statuses
-        if(el.parentNode.parentNode.dataset.type != 'reward'){
-            el.dispatchEvent(event)
-        }
-    })
+        Array.from(isComplete).forEach((el)=>{
+            let reoccuring = el.parentNode.parentNode.dataset.reoccurance
+            let type = el.parentNode.parentNode.dataset.type
+            if(type != 'reward'){
+                // Add to total points
+                const value = el.parentNode.parentNode.getElementsByClassName('points')
+                pointsClaimed += Number(value[0].innerHTML)
+                //Delete non-reoccuring
+                const event = new Event('click')
+                if(reoccuring != 'reoccuring'){
+                    console.log(el.parentNode.parentElement.lastElementChild)
+                    el.parentNode.parentElement.lastElementChild.dispatchEvent(event)
+                }
+                //Reset the completed statuses
+                el.dispatchEvent(event)
+            }
+        })
 
-    // Add points to current total
-    addToTotal(pointsClaimed)
+        // Add points to current total
+        changeTotal(pointsClaimed)
+    } catch(err) {
+        console.log(err)
+    }
+}
+
+async function claimRewardsPoints(){
+    try{
+        let pointsClaimed = 0;
+    
+        Array.from(isComplete).forEach((el)=>{
+            let reoccuring = el.parentNode.parentNode.dataset.reoccurance
+            let type = el.parentNode.parentNode.dataset.type
+            
+            if(type == 'reward'){
+                // Add to total points
+                const value = el.parentNode.parentNode.getElementsByClassName('points')
+                pointsClaimed += Number(value[0].innerHTML)
+                //Delete non-reoccuring
+                const event = new Event('click')
+                if(reoccuring != 'reoccuring'){
+                    el.parentNode.parentElement.lastElementChild.dispatchEvent(event)
+                }
+                //Reset the completed statuses
+                el.dispatchEvent(event)
+            }
+            // Change total
+            changeTotal(pointsClaimed)
+        })
+    } catch(err) {
+        console.log(err)
+    }
 }

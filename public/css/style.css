@@ -40,3 +40,9 @@ body {
 li {
     list-style-type: none;
 }
+
+/* Insufficient Points Hidden */
+
+.hidden {
+    display: none;
+}
