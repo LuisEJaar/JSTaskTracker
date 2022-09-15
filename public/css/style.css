@@ -46,3 +46,9 @@ li {
 .hidden {
     display: none;
 }
+
+/* Todos page max-size */
+
+.todoBox {
+    max-width: fit-content;
+}
