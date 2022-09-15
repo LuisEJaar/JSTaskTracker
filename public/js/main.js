@@ -152,6 +152,7 @@ async function claimChorePoints(){
 
 async function claimRewardsPoints(){
     try{
+        let pointsCurrent = Number(document.getElementById('userPoints').innerHTML)
         let pointsClaimed = 0;
     
         Array.from(isComplete).forEach((el)=>{
@@ -165,13 +166,14 @@ async function claimRewardsPoints(){
                 //Delete non-reoccuring
                 const event = new Event('click')
                 if(reoccuring != 'reoccuring'){
+                    console.log(el.parentNode.parentElement.lastElementChild)
                     el.parentNode.parentElement.lastElementChild.dispatchEvent(event)
                 }
                 //Reset the completed statuses
                 el.dispatchEvent(event)
             }
             // Change total
-            changeTotal(pointsClaimed)
+            changeTotal(pointsCurrent - pointsClaimed)
         })
     } catch(err) {
         console.log(err)
