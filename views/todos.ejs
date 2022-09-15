@@ -15,8 +15,9 @@
         <section class="bg-light rounded mt-2">
             <%- include('./partials/rewards.ejs')%>
         </section>
-        <div>
-            <button class="btn btn-success mt-2">Claim Rewards</button>
+        <div id="pointDeficit" class="mt-2 hidden alert alert-danger">Insufficient Points</div>
+        <div class="">
+            <button id="claimRewards" class="btn btn-success mt-2">Claim Rewards</button>
         </div>
     </section>
 
