@@ -29,13 +29,13 @@ module.exports = {
         }
     },
     markIncomplete: async (req, res)=>{
-        try{
+        try {
             await Reward.findOneAndUpdate({_id:req.body.rewardIdFromJSFile},{
                 completed: false
             })
             console.log('Marked Incomplete')
             res.json('Marked Incomplete')
-        }catch(err){
+        } catch(err){
             console.log(err)
         }
     },
@@ -48,5 +48,9 @@ module.exports = {
         }catch(err){
             console.log(err)
         }
+    }, 
+    claimReward: async(req, res)=> {
+        console.log("claim clicked")
+        // req.flash('errors', { msg: 'Not enough points' })
     }
 }    

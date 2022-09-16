@@ -40,3 +40,15 @@ body {
 li {
     list-style-type: none;
 }
+
+/* Insufficient Points Hidden */
+
+.hidden {
+    display: none;
+}
+
+/* Todos page max-size */
+
+.todoBox {
+    max-width: fit-content;
+}

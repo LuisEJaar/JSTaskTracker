@@ -1,6 +1,6 @@
-<div class="my-auto">
-    
-    <section class="justify-content-around pt-4 pb-4 mt-3 mb-2 bg-info bg-gradient width-50  rounded-4 border-1 border border-info container text-center d-flex flex-column shadow">
+<div class="my-auto todoBox mx-auto">
+    <!-- Chores -->
+    <section class="justify-content-around pt-4 pb-4 mt-3 mb-2 bg-info bg-gradient rounded-4 border-1 border border-info container text-center d-flex flex-column shadow">
         <h2><%= user.userName %> has <span class="text-primary"><%= left %></span> <%= (left > 1 || left == 0) ? 'things' : 'thing' %> left to do.</h2>
         <section class="bg-dark rounded text-light">
             <%- include('./partials/chores.ejs')%>
@@ -9,17 +9,20 @@
             <button id="claimPoints" class="btn btn-success mt-2">Claim Points</button>
         </div>
     </section>
-    
-    <section class="justify-content-around pt-4 pb-4 bg-info bg-gradient width-50  rounded-4 border-1 border border-info container text-center d-flex flex-column shadow">
+
+    <!-- Rewards -->
+    <section class="justify-content-around pt-4 pb-4 bg-info bg-gradient rounded-4 border-1 border border-info container text-center d-flex flex-column shadow">
         <h2><%= user.userName %> has <span class="text-primary" id="userPoints"><%= user.points %></span> <%= (user.points > 1 || user.points == 0) ? 'points' : 'point' %> left to spend.</h2>
         <section class="bg-light rounded mt-2">
             <%- include('./partials/rewards.ejs')%>
         </section>
-        <div>
-            <button class="btn btn-success mt-2">Claim Rewards</button>
+        <div id="pointDeficit" class="mt-2 hidden alert alert-danger">Insufficient Points</div>
+        <div class="">
+            <button id="claimRewards" class="btn btn-success mt-2">Claim Rewards</button>
         </div>
     </section>
 
+    <!-- Add buttons -->
     <section class="justify-content-around pt-2 mt-2 pb-2 bg-info bg-gradient width-25 rounded-4 border-1 border border-info container text-center d-flex flex-column shadow"> 
         <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#newChore">
             Add new Chore

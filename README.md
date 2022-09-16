@@ -1,7 +1,7 @@
 # JSTaskTracker
 Who hasn't wanted to gamify their household chores. Whether motivating yoruself or convincing the kids that those miscellaneous chores will be worth it. Well now you can with this simple application. JSTaskTracker (Chore-ify) is a full stack app application hosted on GithubPages.
 
-**Link to project:** https://luisejaar.github.io/JSTaskTracker/
+**Link to project:** [https://luisejaar.github.io/JSTaskTracker/](https://chore-ify.herokuapp.com/)
 
 <p align="center">
   <img src="https://github.com/LuisEJaar/luisEJaar/blob/main/JSTaskTracker.gif" height="500px"  alt="JSTaskTracker Site"/>
