@@ -5,7 +5,6 @@ nav {
 
 body {
     height: 100vh;
-    width: 100vw;
 }
 
 /* Index Page styles */
@@ -51,4 +50,31 @@ li {
 
 .todoBox {
     max-width: fit-content;
+}
+
+/* Table Styles */
+table {
+    border-collapse: separate;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    border-spacing: 0 10px;
+}
+
+td {
+    border-style: solid none;
+    padding: 4px;
+}
+
+td:first-child {
+    border-left-style: solid;
+    border-top-left-radius: 10px; 
+    border-bottom-left-radius: 10px;
+    overflow: hidden;
+}
+
+td:last-child {
+    border-right-style: solid;
+    border-bottom-right-radius: 10px; 
+    border-top-right-radius: 10px; 
 }

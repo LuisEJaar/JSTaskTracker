@@ -1,21 +1,28 @@
 <h1>Rewards</h1>
-<ul class="pe-3">
-<li class='bg-secondary ps-3 mb-2 text-light rounded todoItem d-flex justify-content-between pe-3 me-3'>
-        <span>Claim</span>
-        <span>Desc</span>
-        <span>Points</span>
-        <span>Repeat</span>
-        <span>Delete</span>
-</li>
-<% rewards.forEach( el => { %>
-        <li class='shadow border <%= el.points <= user.points ? 'bg-success' : 'bg-dark'%> ps-3 mb-2 text-light rounded todoItem d-flex justify-content-between pe-3 me-3' data-reoccurance="<% if(el.reoccuring === true){ %>reoccuring<%} %>" data-type='reward' data-id='<%=el._id%>'>
-                <div class="form-check form-switch">
-                        <input class="reward <%= el.completed === true ? 'completed' : 'not'%> form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" <% if(el.points > user.points){ %> disabled <%} %>  <% if(el.completed === true){ %> checked <%} %>>
-                </div>
-                <span><%= el.reward %></span>
-                <span class="points"><%= el.points %></span>
-                <span><% if(el.reoccuring === true){ %> <i class="bi-arrow-repeat"></i> <%} %></span>
-                <i class="bi-trash del"></i>
-        </li>
-<% }) %>    
-</ul>
+<table>
+  <thead>
+    <tr class='bg-secondary text-light todoItem'>
+      <th>Claim</th>
+      <th>Desc</th>
+      <th>Points</th>
+      <th>Repeat</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% rewards.forEach( el => { %>
+      <tr class='border <%= el.points <= user.points ? 'bg-success' : 'bg-dark'%> text-light rounded todoItem' data-reoccurance="<% if(el.reoccuring === true){ %>reoccuring<%} %>" data-type='reward' data-id='<%=el._id%>'>
+        <td class="ps-5 form-check form-switch">
+                <input class="reward <%= el.completed === true ? 'completed' : 'not'%> form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" <% if(el.points > user.points){ %> disabled <%} %>  <% if(el.completed === true){ %> checked <%} %>>
+        </td>
+        <td><%= el.reward %></td>
+        <td class="points"><%= el.points %></td>
+        <td>
+          <% if(el.reoccuring === true){ %> <i class="bi-arrow-repeat"></i> <%} %></span>
+          </i>
+        </td>
+        <td><i class="bi-trash del"></i></td>
+      </tr>
+    <% }) %> 
+  </tbody>
+</table>

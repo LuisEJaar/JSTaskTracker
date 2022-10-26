@@ -48,8 +48,8 @@ function pointsCheck() {
 pointsCheck()
 
 async function deleteItem(){
-    const itemId = this.parentNode.dataset.id
-    const type = this.parentNode.dataset.type
+    const itemId = this.parentNode.parentNode.dataset.id
+    const type = this.parentNode.parentNode.dataset.type
     try{
         const response = await fetch(type == 'reward' ? 'rewards/deleteReward' : 'todos/deleteTodo' , {
             method: 'delete',
